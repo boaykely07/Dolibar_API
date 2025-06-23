@@ -24,6 +24,7 @@ $Admin_Controller = new AdminController();
 
 $router->get('/login', [ $Auth_Controller, 'showLoginForm' ]);
 $router->post('/login', [ $Auth_Controller, 'login' ]);
+
 $router->get('/logout', [ $Auth_Controller, 'logout' ]);
 
 $router->get('/', function() {

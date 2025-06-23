@@ -44,6 +44,6 @@
         <a href="listeTickets">Liste des Tickets</a>
     </div>
     <div>
-        <a href="logout" class="logout">Déconnexion</a>
+        <a href="/<?=BASE_URL?>/logout" class="logout">Déconnexion</a>
     </div>
 </nav> 
