@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <title>CRM Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backup</title>
 </head>
 <body>
-    <h1>Backup</h1>
-    <a href="listestickets">Tickets</a>
-</body>
-</html>
+
+<?php include(__DIR__ . '/nav.php'); ?>
+
+<div class="container"> 

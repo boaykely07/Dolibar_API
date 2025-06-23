@@ -8,15 +8,7 @@ use flight\Engine;
 class AuthController {
     private $app;
     public function __construct(){
-        
-    }
-
-    public function home() {
-        Flight::render('index');
-    }
-
-    public function tonga() {
-        Flight::render('tonga');
+        session_start();
     }
 
     public function showLoginForm() {
@@ -39,7 +31,7 @@ class AuthController {
             $_SESSION['user_data'] = $response['success'];
             $_SESSION['user_token'] = $response['success']['token'];
             $_SESSION['is_logged_in'] = true;
-            Flight::redirect('/dashboard');
+            Flight::redirect('/admin/dashboard');
         } else {
             $_SESSION['flash_error'] = "Invalid login or password";
             Flight::redirect('/login');

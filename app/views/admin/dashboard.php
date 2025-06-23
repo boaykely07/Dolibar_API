@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../layout/header.php'); ?>
+<?php require_once(__DIR__ . '/header.php'); ?>
 
 <h1>Tableau de Bord</h1>
 
@@ -55,4 +55,3 @@
 .stat-card.other p { color: #6c757d; }
 </style>
 
-<?php require_once(__DIR__ . '/../layout/footer.php'); ?> 

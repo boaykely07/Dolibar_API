@@ -14,16 +14,6 @@ use app\controllers\AdminController;
  * @var Engine $app
  */
 
-$app->before('start', function(&$params, &$output){
-    session_start();
-});
-
-Flight::map('auth_check', function() {
-    if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
-        Flight::redirect('/login');
-        exit();
-    }
-});
 
 
 $Home_Controller = new HomeController();
@@ -44,14 +34,14 @@ $router->get('/', function() {
     }
 });
 
-$router->get('/dashboard', [$Admin_Controller, 'index'])->addMiddleware(['auth_check']);
 
-#Gestion des tickets
-$router->group('/tickets', function($router){
-    global $Ticket_Controller;
-    $router->get('/listeTickets', [ $Ticket_Controller, 'getTickets' ]);
-}, ['auth_check']);
+#admin
+$router->group('/admin', function($router){
+    global $Admin_Controller;
+    $router->get('/dashboard', [ $Admin_Controller, 'index' ]);
+    $router->get('/listeTickets', [ $Admin_Controller, 'getTickets' ]);
 
+});
 
 
 
