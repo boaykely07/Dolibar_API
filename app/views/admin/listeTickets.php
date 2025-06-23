@@ -1,5 +1,3 @@
-<?php require_once('layout/header.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,5 +37,3 @@
     </table>
 </body>
 </html>
-
-<?php require_once('layout/footer.php'); ?>

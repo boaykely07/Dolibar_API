@@ -11,13 +11,20 @@ class DolibarrModel{
 
     }
 
+    private static function get_token() {
+        if (isset($_SESSION['user_token'])) {
+            return $_SESSION['user_token'];
+        }
+        return self::$token;
+    }
+
     public static function get($recuperation){
         $url = self::$baseUrl . $recuperation;
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'DOLAPIKEY: ' . self::$token
+            'DOLAPIKEY: ' . self::get_token()
         ]);
 
         $response = curl_exec($ch);
@@ -35,7 +42,7 @@ class DolibarrModel{
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'DOLAPIKEY: ' . self::$token
+            'DOLAPIKEY: ' . self::get_token()
         ]);
         $response = curl_exec($ch);
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -55,7 +62,7 @@ class DolibarrModel{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'DOLAPIKEY: ' . self::$token,
+            'DOLAPIKEY: ' . self::get_token(),
             'Content-Type: application/json'
         ]);
 
@@ -75,7 +82,7 @@ class DolibarrModel{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE"); // 👈 Indique une requête DELETE
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'DOLAPIKEY: ' . self::$token,
+            'DOLAPIKEY: ' . self::get_token(),
             'Content-Type: application/json' // 👈 Facultatif mais recommandé
         ]);
     
@@ -97,7 +104,7 @@ class DolibarrModel{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); // 👈 Indique une requête DELETE
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'DOLAPIKEY: ' . self::$token,
+            'DOLAPIKEY: ' . self::get_token(),
             'Content-Type: application/json' // 👈 Facultatif mais recommandé
         ]);
     

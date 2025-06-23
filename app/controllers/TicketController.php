@@ -32,13 +32,25 @@ class TicketController {
             else{
                 $ticket['status_label'] = "Non renseigné";
             }
+
+            if (isset($ticket['array_options']['options_date_de_debut'])) {
+                $ticket['date_debut'] = date('d/m/Y', $ticket['array_options']['options_date_de_debut']);
+            } else {
+                $ticket['date_debut'] = 'Non renseigné';
+            }
+        
+            if (isset($ticket['array_options']['options_date_de_fin'])) {
+                $ticket['date_fin'] = date('d/m/Y', $ticket['array_options']['options_date_de_fin']);
+            } else {
+                $ticket['date_fin'] = 'Non renseigné';
+            }
         }
         // var_dump($tickets);
 
         $data = [
             'tickets' => $tickets
         ];
-        Flight::render('listeTickets',$data);
+        Flight::render('admin/listeTickets',$data);
 
     }
 }
